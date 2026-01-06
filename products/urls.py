@@ -3,11 +3,8 @@ from . import views
 
 
 urlpatterns = [
-    path('product_one/', views.product_one),
-    path('product_two/', views.product_two),
-    path('product_three/', views.product_three),
-
+    path('product_one/', views.korean_food),
+    path('product_two/', views.current_time),
+    path('product_three/', views.about_me),
+    
 ]
-#     path('products/', views.product),
-#     path('products/<int:id>/', views.product_detail), 
-# ]
