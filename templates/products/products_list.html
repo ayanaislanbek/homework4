@@ -1,0 +1,19 @@
+{% load static %}
+
+<h1>Список товаров</h1>
+
+<ul class="news-list">
+    {% for i in products %}
+    <li class="news-card">
+        <h3>{{ i.name_product }}</h3>
+        
+        <img src="{{ i.image.url }}" alt="" width="300" height="400">
+        <br>
+        
+        <data>{{ i.created_at }}</data>
+        <br>
+        
+        <button><a href="/product_list/{{ i.id }}/">Читать далее</a></button>
+    </li>
+    {% endfor %}
+</ul>
