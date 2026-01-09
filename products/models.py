@@ -39,3 +39,6 @@ class Reviews(models.Model):
     def __str__(self):
         return f'{self.post}:{self.marks}'
     
+    class Meta:
+        verbose_name = 'comment'
+        verbose_name_plural = 'comments'
