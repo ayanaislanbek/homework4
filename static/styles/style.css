@@ -1,0 +1,271 @@
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fffafa ;
+}
+
+
+.navbar {
+    background-color: #ffffff;
+    border-bottom: 2px solid #fce4ec; 
+    padding: 10px 0;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+}
+
+.nav-menu li a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.nav-menu li a:hover {
+    background-color: #fce4ec; 
+    color: #f06292; 
+}
+
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+
+
+top: 100%; 
+    left: 0;
+    background-color: #ffffff;
+    border: 1px solid #fce4ec;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    list-style: none;
+    padding: 10px 0;
+    min-width: 180px;
+    z-index: 1000;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 10px 20px;
+    border-radius: 0;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block; 
+}
+
+ 
+.admin {
+    border: 1px solid #f06292;
+    color: #f06292 !important;
+}
+
+.admin:hover {
+    background-color: #f06292 !important;
+    color: white !important;
+}
+
+footer {
+    margin-top: auto; 
+    background-color: #fce4ec;
+    color: #880e4f;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 14px;
+}
+
+
+
+
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    gap: 30px;
+    padding: 40px;
+    margin: 0 auto;
+    max-width: 1200px;
+    list-style: none; 
+}
+
+
+.product-card {
+    background-color: #ffffff;
+    border: 1px solid #fce4ec; 
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(240, 98, 146, 0.1);
+}
+
+
+.product-card h3 {
+    color: #880e4f;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+
+.product-card img {
+    border-radius: 10px;
+    object-fit: cover; 
+    margin-bottom: 15px;
+    border: 1px solid #fdf0f4;
+}
+
+
+.product-card data {
+    display: block;
+    color: #999;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+
+.product-card button {
+    background-color: #f06292;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 25px;
+    transition: background-color 0.3s ease;
+}
+
+.product-card button a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.product-card button:hover {
+    background-color: #e91e63; 
+    cursor: pointer;
+}
+
+
+h1 {
+    text-align: center;
+    color: #880e4f;
+    margin-top: 30px;
+    font-weight: 300;
+}
+
+
+
+
+.product-detail {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    border: 1px solid #fce4ec; 
+    box-shadow: 0 4px 15px rgba(240, 98, 146, 0.05);
+    text-align: center;
+}
+
+.product-title {
+    color: #880e4f;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.product-media img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    border: 2px solid #fce4ec;
+    margin-bottom: 20px;
+}
+
+.product-description {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.product-category {
+    font-weight: bold;
+    color: #f06292; 
+    margin-bottom: 10px;
+}
+
+.product-date {
+    color: #999;
+    font-size: 0.9rem;
+}
+
+
+.comments {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fffafa; 
+    border-radius: 15px;
+}
+
+.comments-title {
+    color: #880e4f;
+    border-bottom: 2px solid #fce4ec;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.comments ul {
+    list-style: none;
+    padding: 0;
+}
+
+.comments li {
+    background-color: #ffffff;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-left: 4px solid #f06292;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+}
+
+.rating {
+    font-weight: bold;
+    color: #f06292;
+    margin-bottom: 5px;
+}
+
+.review {
+    font-style: italic;
+    color: #333;
+    margin: 10px 0;
+}
+
+.date {
+    font-size: 0.8rem;
+    color: #999;
+    text-align: right;
+}
+
+.no-comments {
+    color: #999;
+    text-align: center;
+    font-style: italic;
+}

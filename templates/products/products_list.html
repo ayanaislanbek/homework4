@@ -1,10 +1,14 @@
 {% load static %}
 
+  {% include '../header.html' %}
+
+<link rel="stylesheet" href="{% static 'styles/style.css'%}">
+
 <h1>Список товаров</h1>
 
-<ul class="news-list">
+<ul class="product-list">
     {% for i in products %}
-    <li class="news-card">
+    <li class="product-card">
         <h3>{{ i.name_product }}</h3>
         
         <img src="{{ i.image.url }}" alt="" width="300" height="400">
@@ -17,3 +21,5 @@
     </li>
     {% endfor %}
 </ul>
+
+{% include '../footer.html' %}

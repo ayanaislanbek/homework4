@@ -20,3 +20,22 @@ class Products(models.Model):
 
     def __str__(self):
         return self.name_models
+    
+
+
+class Reviews(models.Model):
+    post = models.ForeignKey(Products, on_delete=models.CASCADE, related_name="review")
+    MARKS = (
+        ("🤍", "🤍"),
+        ("🤍 🤍 ", "🤍 🤍 "),
+        ("🤍 🤍 🤍", "🤍 🤍 🤍"),
+        ("🤍 🤍 🤍 🤍", "🤍 🤍 🤍 🤍"),
+        ("🤍 🤍 🤍 🤍 🤍", "🤍 🤍 🤍 🤍 🤍")
+    )
+    marks = models.CharField(max_length=1000, choices=MARKS, default="🤍")
+    text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return f'{self.post}:{self.marks}'
+    
