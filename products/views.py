@@ -19,12 +19,12 @@ def products(request):
 
 def product_detail(request,id):
    if request.method == "GET":
-      products_id = get_object_or_404(Products, id=id)
+      product_id = get_object_or_404(Products, id=id)
    return render(
       request,
       template_name='products/products_detail.html',
       context={
-         'products_id' : products_id
+         'product_id' : product_id
       }
 
    )

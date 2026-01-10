@@ -1,48 +1,36 @@
 {% load static %}
+{% include '../header.html' %}
 
-  {% include '../header.html' %}
+<link rel="stylesheet" href="{% static 'styles/style.css' %}">
 
-<link rel="stylesheet" href="{% static 'styles/style.css'%}">
- 
+<div class="product-detail">
+    <h1 class="product-title">{{ product_id.name_models }}</h1>
 
-   <div class="product-detail">
+    {% if product_id.image %}
+        <img src="{{ product_id.image.url }}" alt="{{ product_id.name_models }}">
+    {% endif %}
 
-    <h1 class="product-title">{{ product.name_products }}</h1>
-
-    <div class="product-media">
-        <img src="{{ product.image.url }}" alt="{{ product.title }}">
-    </div>
-
-    <p class="product-description">{{ product.description }}</p>
-    <p class="product-category">Категория: {{ product.type_products }}</p>
-
-    <data class="product-date">{{ product.created_at }}</data>
-
+    <p>{{ product_id.description }}</p>
+    <p>Категория: {{ product_id.type_products }}</p>
+    <p>Цена: {{ product_id.price }}</p>
 </div>
 
+<hr>
 
 <div class="comments">
-  <h3 class="comments-title">Отзывы</h3>
-   {% if products_id.review.all %}
-  {% for i in product.review.all %}
-  <ul>
-    <li>
-      <p class="rating">Оценка: 
-        <span class="hearts" aria-hidden="true">
-          <span class="hearts white">{{ i.marks }}</span>
-        </span>
-      </p>
+    <h3>Отзывы</h3>
 
-      <p class="review">Отзыв: {{ i.text }}</p>
-
-      <p class="date">Дата: {{ i.created_at }}</p>
-    </li>
-
-  </ul>
-  {% endfor %}
+    {% if product_id.review.exists %}
+        {% for review in product_id.review.all %}
+                <p>Оценка: {{ review.marks }}</p>
+                <p>{{ review.text }}</p>
+                <small>{{ review.created_at }}</small>
+            </div>
+        {% endfor %}
     {% else %}
-      <p>Нет отзывов</p>
+        <p>Отзывов пока нет</p>
     {% endif %}
 </div>
+
 
 {% include '../footer.html' %}
