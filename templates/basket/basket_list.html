@@ -1,0 +1,31 @@
+{% load static %}
+{% include '../header.html' %}
+
+<link rel="stylesheet" href="{% static 'styles/style.css' %}">
+
+
+   <main class="news-container">
+    <h1 class="news-title">Корзина</h1>
+
+    <ul class="news-list">
+        {% for i in basket %}
+        <li class="news-card">
+            <h3 class="news-name">{{ i.product.name_models}}</h3>
+            <h3 class="news-name">{{ i.basket_quantity}}</h3>
+            <h3 class="news-name">{{ i.phone }}</h3>
+            <time class="news-date">{{ i.adress }}</time>
+            <time class="news-date">{{ i.updated_at }}</time>
+            <a href="/basket_list/{{i.id}}/edit/" class="news-button">
+                Редактировать данные 
+            </a>
+
+            <a href="/basket_list/{{i.id}}/delete/" class="news-button">
+                Удалить из корзины
+            </a>
+
+        </li>
+        {% endfor %}
+    </ul>
+</main>
+
+{% include '../footer.html' %}
