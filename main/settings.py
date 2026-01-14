@@ -28,7 +28,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'products',
     'myShop' ,
-    'basket'
+    'basket', 
+    'captcha',
+    'users',
 ]
 
 MIDDLEWARE = [
