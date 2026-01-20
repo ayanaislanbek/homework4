@@ -4,6 +4,24 @@ from datetime import datetime
 from products.models import Products
 
 
+
+def search_view(request):
+ query = request.GET.get('s','')
+ if query:
+         products = Products.objects.filter(name_models__icontains=query)
+ else:
+    products = Products.objects.none
+    return render(
+       request,
+       template_name='products/products_list.html',
+      context={
+            'products': products
+      }
+    )
+
+
+
+
 def products(request):
    if request.method == "GET":
       products = Products.objects.all()

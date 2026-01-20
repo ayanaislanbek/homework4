@@ -30,3 +30,31 @@ class DevUser(User):
 
     def __str__(self):
         return self.username
+    
+
+
+class Location(models.Model):
+   name = models.CharField(max_length=50)
+
+   def __str__(self):
+        return self.name
+   
+
+
+class HouseTour(models.Model):
+    title = models.CharField(max_length=100)
+    location = models.ForeignKey(Location, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.title} - {self.location.name}'
+
+
+
+
+class TourRegistration(models.Model):
+    user = models.OneToOneField(DevUser, on_delete=models.CASCADE)
+    joined_data = models.DateTimeField(auto_now_add=True)
+
+
+    def __str__(self):
+        return self.user.username

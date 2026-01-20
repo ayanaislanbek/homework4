@@ -6,7 +6,7 @@ urlpatterns = [
     path('product_one/', views.korean_food, name='product_one'),
     path('product_two/', views.current_time),
     path('product_three/', views.about_me, name='product_three'),
-
+    path('search/',views.search_view, name= 'search'),
     path('products_list/', views.products, name='home_page') , 
     path('product_list/<int:id>/',views.product_detail,name='product_detail')
 ]

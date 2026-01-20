@@ -1,0 +1,31 @@
+{% load static %}
+
+{% include '../header.html' %}
+
+<link rel="stylesheet" href="{% static 'styles/style.css' %}">
+
+   <main class="news-container">
+    <h1 class="news-title">Alexander McQuuen</h1>
+
+   
+
+    <ul class="news-list">
+        {% for i in clothes %}
+        <li class="news-card">
+            <h3 class="news-name">{{ i.title}}</h3>
+            
+            <h3 class="news-name">{{ i.created_at }}</h3>
+            <img src="{{ i.image.url }}" alt="{{ i.title }}" style="width: 400px;">
+            {% for j in i.brands_name.all %}
+            
+            <p>
+                <a href="{% url 'clothes' %}">{{ j.name }}</a>
+            </p>
+            {% endfor %}
+        </li>
+        {% endfor %}
+    </ul>
+</main>
+
+
+{% include '../footer.html' %}

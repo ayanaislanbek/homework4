@@ -41,7 +41,7 @@ def auth_session_view(request):
 
 
 
-
+  
 def developer_list_view(request):
     if request.method == 'GET':
         developer_list = DevUser.objects.all()
@@ -56,3 +56,7 @@ def developer_list_view(request):
 def sign_out_view(request):
     logout(request)
     return redirect('/sign_in/')
+
+
+
+
