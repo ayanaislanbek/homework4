@@ -4,7 +4,7 @@
             <li><a href="{% url 'home_page' %}">Главная</a></li>
             <li><a href="{% url 'product_one' %}">Продукты</a></li>
             <li><a href="{% url 'product_three' %}">О нас</a></li>
-
+             
             <li class="dropdown">
                 <a href="#">Корзина</a>
                 <ul class="dropdown-menu">
@@ -13,8 +13,19 @@
                 </ul>
             </li>
 
-            <li><a href="#">Регистрация</a></li>
-            <li><a href="#">Авторизация</a></li>
+
+            <li class="dropdown">
+                <a href="#">Каталог фильмов</a>
+                <ul class="dropdown-menu">
+                      <li><a href="{% url 'registration' %}">Регистрация</a></li>
+                      <li><a href="{% url 'logon' %}">Авторизация</a></li>
+                    <li><a href="{% url 'add_movie' %}">Добавить фильм</a></li>
+                    <li><a href="{% url 'movie_list' %}">Список фильмов</a></li>
+                </ul>
+            </li>
+
+            <li><a href="{% url 'sign_up' %}">Регистрация</a></li>
+            <li><a href="{% url 'sign_in' %}">Авторизация</a></li>
             <li><a href="{% url 'clothes' %}">Одежды</a></li>
             <li><a href="/admin/" class="admin">Админ-панель</a></li>
         </ul>

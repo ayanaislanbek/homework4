@@ -2,50 +2,46 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from datetime import datetime
 from products.models import Products
+from django.views import generic 
 
 
 
-def search_view(request):
- query = request.GET.get('s','')
- if query:
-         products = Products.objects.filter(name_models__icontains=query)
- else:
-    products = Products.objects.none
-    return render(
-       request,
-       template_name='products/products_list.html',
-      context={
-            'products': products
-      }
-    )
+class SearchView(generic.ListView):
+  template_name= 'products/products_list.html'
+  context_object_name=  'products'
+  model = Products
+
+  def get_queryset(self):
+     return self.model.objects.filter(name_models__icontains=self.request.GET.get("s"))
+  
+  def get_context_data(self, object_list=None, **kwargs):
+     context =super().get_context_data(**kwargs)
+     context['s'] = self.request.GET.get('s')
+     return context
 
 
 
 
-def products(request):
-   if request.method == "GET":
-      products = Products.objects.all()
-      return render (
-         request,
-         template_name='products/products_list.html',
-         context={
-            'products': products
-         }
-      )
-   
+class ProductsView(generic.ListView):
+    template_name = 'products/products_list.html'
+    context_object_name =  'products'
+    model = Products
+
+    def get_queryset(self):
+        return self.model.objects.all()
 
 
-def product_detail(request,id):
-   if request.method == "GET":
-      product_id = get_object_or_404(Products, id=id)
-   return render(
-      request,
-      template_name='products/products_detail.html',
-      context={
-         'product_id' : product_id
-      }
 
-   )
+
+class ProductsDetailView(generic.DetailView):
+    template_name = 'products/products_detail.html'
+    model = Products
+    context_object_name = 'product_id'
+
+    def get_object(self, **kwargs):
+        product_id = self.kwargs.get('id')
+        return get_object_or_404(self.model, id=product_id)
+    
 
 
 

@@ -1,0 +1,15 @@
+{% load static %}
+
+{% include '../header.html' %}
+
+<h1>Редактировать фильм</h1>
+<form  method ="post">
+    {% csrf_token %}
+    {{form.as_p}}
+  <button type="submit">Редактировать фильм</button>
+  <button type="reset">Очистить</button>
+</form>
+
+
+
+{% include '../footer.html' %}

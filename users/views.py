@@ -4,59 +4,36 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from users.forms import CustomRegisterForm, CaptchaLoginForm
 from users.models import DevUser
+from django.views import generic
+from django.contrib.auth.views import LoginView, LogoutView
+from django.urls import reverse , reverse_lazy
+
+
+class AccountCreationView(generic.CreateView):
+  template_name='developers/sign_up.html'
+  form_class = CustomRegisterForm
+  success_url='/sign_in/'
 
 
 
-def account_creation_view(request):
-    if request.method == 'POST':
-        form = CustomRegisterForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('/sign_in/')
-    else:
-        form = CustomRegisterForm()
-    return render(
-        request,
-        template_name='developers/sign_up.html',
-        context={'form': form}
-    )
-
-
-
-def auth_session_view(request):
-    if request.method == 'POST':
-        form = CaptchaLoginForm (data=request.POST)
-        if form.is_valid():
-            user = form.get_user()
-            login(request, user)
-            return redirect('/developer_list/')
-    else:
-        form =CaptchaLoginForm()
+class AuthSessionView(LoginView):
+    template_name='developers/sign_in.html'
+    form_class = AuthenticationForm
     
-    return render(
-        request,
-        template_name='developers/sign_in.html',
-        context={'form': form}
-    )
+    def get_success_url(self):
+        return reverse("home_page")
 
 
 
-  
-def developer_list_view(request):
-    if request.method == 'GET':
-        developer_list = DevUser.objects.all()
-    return render(
-        request,
-        template_name='developers/developer_list.html',
-        context={'developer_list': developer_list}
-    )
+class DeveloperListView(generic.ListView):
+    model = DevUser
+    template_name = 'developers/developer_list.html'
+    context_object_name = 'developer_list'
 
 
 
-def sign_out_view(request):
-    logout(request)
-    return redirect('/sign_in/')
-
+class SignOutView(LogoutView):
+    next_page = reverse_lazy ('sign_in')
 
 
 

@@ -1,0 +1,48 @@
+{% load static %}
+
+{% include '../header.html' %}
+
+<link rel="stylesheet" href="{% static 'styles/style.css' %}">
+
+<main class="news-container">
+    <h1 class="news-title">Список фильмов</h1>
+ 
+    <form method="GET" action="{% url 'search' %}" style="margin: 20px 0;">
+        <input 
+            type="text" 
+            name="m" 
+            placeholder="Поиск фильмов" 
+            style="padding: 10px; width: 300px;"
+        >
+        <button type="submit" style="padding: 10px 20px;">
+            Найти
+        </button>
+    </form>
+
+
+    {% if products %}
+    <ul class="news-list">
+        {% for i in CineBoard %}
+        <li class="news-card">
+
+            <h3 class="news-name">{{ i.name_film }}</h3>
+            <h3 class="news-name">{{ i.description }}</h3>
+            <h3 class="news-name">{{ i.genre }}</h3>
+            <time class="news-date">{{ i.created_at }}</time>
+
+            <a href="/movie_list/{i.id}/edit_movie/" class="news-button">
+                Редактировать 
+            </a>
+           <a href="/movie_list/{i.id}/delete_movie/" class="news-button">
+            Удалить 
+         </a> 
+         
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>Скоро премьеры</p>
+    {% endif %}
+</main>
+
+{% include '../footer.html' %}
